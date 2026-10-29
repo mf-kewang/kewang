@@ -1,2 +1,286 @@
-# My-Portfolio
-Project
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mariam Fatima Kewang | Portfolio</title>
+  <meta name="description" content="Personal portfolio of Mariam Fatima Kewang." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Intro splash -->
+  <div class="splash" id="splash" aria-hidden="true">
+    <div class="splash-mark">MFK</div>
+    <div class="splash-bar"><span></span></div>
+    <p class="splash-text">loading portfolio</p>
+  </div>
+
+  <!-- Soft cursor glow -->
+  <div class="glow" id="glow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a href="#home" class="logo" data-page="home">MFK<span>.</span></a>
+
+    <nav class="nav" id="nav" aria-label="Main">
+      <span class="nav-pill" id="navPill"></span>
+      <a href="#home" data-page="home" class="nav-link active">Home</a>
+      <a href="#about" data-page="about" class="nav-link">About Me</a>
+      <a href="#education" data-page="education" class="nav-link">Educational Attainment</a>
+      <a href="#certificates" data-page="certificates" class="nav-link">Certificates</a>
+      <a href="#family" data-page="family" class="nav-link">Family</a>
+    </nav>
+
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.3M12 19.2v2.3M2.5 12h2.3M19.2 12h2.3M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
+      </svg>
+    </button>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main class="stage" id="stage">
+
+    <!-- ============ HOME ============ -->
+    <section class="page active" id="home" data-title="Home">
+      <div class="home">
+        <div class="home-copy">
+          <p class="eyebrow reveal">Hello, I'm</p>
+          <h1 class="name reveal">
+            <span>Mariam Fatima</span>
+            <span class="outline">Kewang</span>
+          </h1>
+          <p class="role reveal">
+            I'm a <span class="typed" id="typed"></span><span class="caret"></span>
+          </p>
+          <p class="lead reveal">
+            Welcome to my little corner of the internet. Give the ID badge a tug,
+            drag it around, and let it swing. Then take a look around to get to know me.
+          </p>
+
+          <div class="socials reveal">
+            <!-- TODO: replace the # with your real profile links -->
+            <a class="chip" href="#" target="_blank" rel="noopener" id="facebookLink">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12Z"/></svg>
+              Facebook
+            </a>
+            <a class="chip" href="#" target="_blank" rel="noopener" id="instagramLink">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+
+        <!-- Hanging ID badge -->
+        <div class="badge-zone" id="badgeZone">
+          <div class="hook"></div>
+          <div class="swing" id="swing">
+            <div class="strap"><span>MFK • PORTFOLIO • MFK • PORTFOLIO •</span></div>
+            <div class="clip"></div>
+            <div class="badge" id="badge">
+              <div class="badge-slot"></div>
+              <div class="photo">
+                <!-- Put your picture at portfolio/images/photo.jpg -->
+                <img src="images/photo.jpg" alt="Portrait of Mariam Fatima Kewang" id="photoImg" />
+                <div class="photo-fallback" id="photoFallback">MFK</div>
+              </div>
+              <div class="badge-info">
+                <h3>Mariam Fatima Kewang</h3>
+                <p>Student &amp; Aspiring Developer</p>
+                <div class="barcode" aria-hidden="true"></div>
+              </div>
+              <div class="shine"></div>
+            </div>
+          </div>
+          <span class="tag t1">curious</span>
+          <span class="tag t2">creative</span>
+          <span class="tag t3">dedicated</span>
+          <p class="hint">drag me</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="page" id="about" data-title="About Me">
+      <div class="page-head">
+        <p class="eyebrow">01 / About</p>
+        <h2>A little about me</h2>
+      </div>
+
+      <div class="about-grid">
+        <article class="card tilt">
+          <h3>Who I am</h3>
+          <p>
+            Write a short introduction here. Share where you're from, what you're studying,
+            and what motivates you. Replace this placeholder text with your own story.
+          </p>
+          <p>
+            Add a second paragraph about your goals, the things you're learning, or what you
+            hope to build in the future.
+          </p>
+        </article>
+
+        <article class="card tilt">
+          <h3>What I work with</h3>
+          <div class="tags" id="skillTags">
+            <button class="tag-btn">Java</button>
+            <button class="tag-btn">HTML</button>
+            <button class="tag-btn">CSS</button>
+            <button class="tag-btn">JavaScript</button>
+            <button class="tag-btn">VS Code</button>
+          </div>
+          <p class="skill-note" id="skillNote">Tap a skill to see a note about it.</p>
+        </article>
+
+        <article class="card tilt wide">
+          <h3>Quick facts <small>(click to flip through)</small></h3>
+          <button class="fact" id="factBtn" aria-live="polite">
+            <span id="factText">Click me for a random fact.</span>
+            <em id="factCount">1 / 4</em>
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION ============ -->
+    <section class="page" id="education" data-title="Educational Attainment">
+      <div class="page-head">
+        <p class="eyebrow">02 / Education</p>
+        <h2>Educational attainment</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="card">
+            <span class="tl-year">20XX – Present</span>
+            <h3>College / University</h3>
+            <p>Your school name &middot; Your course</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="card">
+            <span class="tl-year">20XX – 20XX</span>
+            <h3>Senior High School</h3>
+            <p>Your school name &middot; Your strand</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="card">
+            <span class="tl-year">20XX – 20XX</span>
+            <h3>Junior High School</h3>
+            <p>Your school name</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-dot"></span>
+          <div class="card">
+            <span class="tl-year">20XX – 20XX</span>
+            <h3>Elementary</h3>
+            <p>Your school name</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICATES ============ -->
+    <section class="page" id="certificates" data-title="Certificates">
+      <div class="page-head">
+        <p class="eyebrow">03 / Certificates</p>
+        <h2>Certificates &amp; recognitions</h2>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="tech">Tech</button>
+        <button class="filter" data-filter="academic">Academic</button>
+      </div>
+
+      <div class="cert-grid" id="certGrid">
+        <button class="cert card" data-cat="tech" data-title="Certificate Title 1" data-meta="Issuer &middot; Month 20XX" data-desc="Describe what you learned or achieved with this certificate.">
+          <span class="cert-icon">★</span>
+          <h3>Certificate Title 1</h3>
+          <p>Issuer &middot; 20XX</p>
+        </button>
+        <button class="cert card" data-cat="tech" data-title="Certificate Title 2" data-meta="Issuer &middot; Month 20XX" data-desc="Describe what you learned or achieved with this certificate.">
+          <span class="cert-icon">★</span>
+          <h3>Certificate Title 2</h3>
+          <p>Issuer &middot; 20XX</p>
+        </button>
+        <button class="cert card" data-cat="academic" data-title="Academic Award" data-meta="School &middot; Month 20XX" data-desc="Describe what you received this recognition for.">
+          <span class="cert-icon">★</span>
+          <h3>Academic Award</h3>
+          <p>School &middot; 20XX</p>
+        </button>
+        <button class="cert card" data-cat="academic" data-title="Seminar Participation" data-meta="Organizer &middot; Month 20XX" data-desc="Describe the seminar and what you took away from it.">
+          <span class="cert-icon">★</span>
+          <h3>Seminar Participation</h3>
+          <p>Organizer &middot; 20XX</p>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ FAMILY ============ -->
+    <section class="page" id="family" data-title="Family">
+      <div class="page-head">
+        <p class="eyebrow">04 / Family</p>
+        <h2>The people behind me</h2>
+      </div>
+
+      <div class="family-grid">
+        <button class="flip" aria-label="Flip card">
+          <span class="flip-in">
+            <span class="face front"><b>Mother</b><i>Name here</i></span>
+            <span class="face back"><p>Add a short line about her.</p></span>
+          </span>
+        </button>
+        <button class="flip" aria-label="Flip card">
+          <span class="flip-in">
+            <span class="face front"><b>Father</b><i>Name here</i></span>
+            <span class="face back"><p>Add a short line about him.</p></span>
+          </span>
+        </button>
+        <button class="flip" aria-label="Flip card">
+          <span class="flip-in">
+            <span class="face front"><b>Sibling</b><i>Name here</i></span>
+            <span class="face back"><p>Add a short line here.</p></span>
+          </span>
+        </button>
+        <button class="flip" aria-label="Flip card">
+          <span class="flip-in">
+            <span class="face front"><b>Sibling</b><i>Name here</i></span>
+            <span class="face back"><p>Add a short line here.</p></span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>&copy; <span id="year">2026</span> Mariam Fatima Kewang</span>
+    <button class="next" id="nextBtn">Next: About Me <span>→</span></button>
+  </footer>
+
+  <!-- Certificate modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <span class="cert-icon big">★</span>
+      <h3 id="modalTitle"></h3>
+      <p class="modal-meta" id="modalMeta"></p>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
