@@ -50,19 +50,26 @@
     <!-- ============ HOME ============ -->
     <section class="page active" id="home" data-title="Home">
       <div class="home">
+
+        <!-- Left half: introduction -->
         <div class="home-copy">
-          <p class="eyebrow reveal">Hello, I'm</p>
+          <p class="eyebrow reveal"><span class="dot"></span> Welcome to my portfolio</p>
           <h1 class="name reveal">
             <span>Mariam Fatima</span>
-            <span class="outline">Kewang</span>
+            <span class="grad-text">Kewang</span>
           </h1>
           <p class="role reveal">
             I'm a <span class="typed" id="typed"></span><span class="caret"></span>
           </p>
           <p class="lead reveal">
-            Welcome to my little corner of the internet. Give the ID badge a tug,
-            drag it around, and let it swing. Then take a look around to get to know me.
+            I turn curiosity into code and ideas into things you can click.
+            Take a look around to see who I am, what I've learned, and where I'm headed.
           </p>
+
+          <div class="cta reveal">
+            <button class="btn-primary" id="ctaAbout" data-go="about">Get to know me <span>→</span></button>
+            <button class="btn-ghost" id="ctaCerts" data-go="certificates">View certificates</button>
+          </div>
 
           <div class="socials reveal">
             <!-- TODO: replace the # with your real profile links -->
@@ -75,34 +82,33 @@
               Instagram
             </a>
           </div>
+
+          <div class="stats reveal">
+            <div><b>Java</b><span>main language</span></div>
+            <div><b>Web</b><span>HTML · CSS · JS</span></div>
+            <div><b>Always</b><span>learning</span></div>
+          </div>
         </div>
 
-        <!-- Hanging ID badge -->
-        <div class="badge-zone" id="badgeZone">
-          <div class="hook"></div>
-          <div class="swing" id="swing">
-            <div class="strap"><span>MFK • PORTFOLIO • MFK • PORTFOLIO •</span></div>
-            <div class="clip"></div>
-            <div class="badge" id="badge">
-              <div class="badge-slot"></div>
-              <div class="photo">
-                <!-- Put your picture at portfolio/images/photo.jpg -->
-                <img src="images/123.jpg" alt="Portrait of Mariam Fatima Kewang" id="photoImg" />
-                <div class="photo-fallback" id="photoFallback">MFK</div>
-              </div>
-              <div class="badge-info">
-                <h3>Mariam Fatima Kewang</h3>
-                <p>Student &amp; Aspiring Developer</p>
-                <div class="barcode" aria-hidden="true"></div>
-              </div>
-              <div class="shine"></div>
-            </div>
+        <!-- Right half: photo fills half of the tab -->
+        <div class="home-photo" id="homePhoto">
+          <div class="photo-frame" id="photoFrame">
+            <!-- Put your picture at images/123.jpg -->
+            <img src="images/123.jpg" alt="Portrait of Mariam Fatima Kewang" id="photoImg" />
+            <div class="photo-fallback" id="photoFallback">MFK</div>
           </div>
+          <div class="photo-fade" aria-hidden="true"></div>
+
           <span class="tag t1">curious</span>
           <span class="tag t2">creative</span>
           <span class="tag t3">dedicated</span>
-          <p class="hint">drag me</p>
+
+          <div class="photo-caption">
+            <b>Mariam Fatima Kewang</b>
+            <span>Student &amp; Aspiring Developer</span>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -205,23 +211,24 @@
       </div>
 
       <div class="cert-grid" id="certGrid">
-        <button class="cert card" data-cat="tech" data-title="Certificate Title 1" data-meta="Issuer &middot; Month 20XX" data-desc="Describe what you learned or achieved with this certificate.">
-          <span class="cert-icon">★</span>
+        <!-- To add your own: change data-img, the <img src>, and the text. Images go in images/certs/ -->
+        <button class="cert card" data-cat="tech" data-img="images/certs/cert1.jpg" data-title="Certificate Title 1" data-meta="Issuer &middot; Month 20XX" data-desc="Describe what you learned or achieved with this certificate.">
+          <span class="cert-thumb"><img src="images/certs/cert1.jpg" alt="Certificate Title 1" onerror="this.remove()" /></span>
           <h3>Certificate Title 1</h3>
           <p>Issuer &middot; 20XX</p>
         </button>
-        <button class="cert card" data-cat="tech" data-title="Certificate Title 2" data-meta="Issuer &middot; Month 20XX" data-desc="Describe what you learned or achieved with this certificate.">
-          <span class="cert-icon">★</span>
+        <button class="cert card" data-cat="tech" data-img="images/certs/cert2.jpg" data-title="Certificate Title 2" data-meta="Issuer &middot; Month 20XX" data-desc="Describe what you learned or achieved with this certificate.">
+          <span class="cert-thumb"><img src="images/certs/cert2.jpg" alt="Certificate Title 2" onerror="this.remove()" /></span>
           <h3>Certificate Title 2</h3>
           <p>Issuer &middot; 20XX</p>
         </button>
-        <button class="cert card" data-cat="academic" data-title="Academic Award" data-meta="School &middot; Month 20XX" data-desc="Describe what you received this recognition for.">
-          <span class="cert-icon">★</span>
+        <button class="cert card" data-cat="academic" data-img="images/certs/cert3.jpg" data-title="Academic Award" data-meta="School &middot; Month 20XX" data-desc="Describe what you received this recognition for.">
+          <span class="cert-thumb"><img src="images/certs/cert3.jpg" alt="Academic Award" onerror="this.remove()" /></span>
           <h3>Academic Award</h3>
           <p>School &middot; 20XX</p>
         </button>
-        <button class="cert card" data-cat="academic" data-title="Seminar Participation" data-meta="Organizer &middot; Month 20XX" data-desc="Describe the seminar and what you took away from it.">
-          <span class="cert-icon">★</span>
+        <button class="cert card" data-cat="academic" data-img="images/certs/cert4.jpg" data-title="Seminar Participation" data-meta="Organizer &middot; Month 20XX" data-desc="Describe the seminar and what you took away from it.">
+          <span class="cert-thumb"><img src="images/certs/cert4.jpg" alt="Seminar Participation" onerror="this.remove()" /></span>
           <h3>Seminar Participation</h3>
           <p>Organizer &middot; 20XX</p>
         </button>
@@ -236,27 +243,40 @@
       </div>
 
       <div class="family-grid">
+        <!-- Family photos go in images/family/ -->
         <button class="flip" aria-label="Flip card">
           <span class="flip-in">
-            <span class="face front"><b>Mother</b><i>Name here</i></span>
+            <span class="face front">
+              <span class="member"><img src="images/family/mother.jpg" alt="Mother" onerror="this.remove()" /></span>
+              <b>Mother</b><i>Name here</i>
+            </span>
             <span class="face back"><p>Add a short line about her.</p></span>
           </span>
         </button>
         <button class="flip" aria-label="Flip card">
           <span class="flip-in">
-            <span class="face front"><b>Father</b><i>Name here</i></span>
+            <span class="face front">
+              <span class="member"><img src="images/family/father.jpg" alt="Father" onerror="this.remove()" /></span>
+              <b>Father</b><i>Name here</i>
+            </span>
             <span class="face back"><p>Add a short line about him.</p></span>
           </span>
         </button>
         <button class="flip" aria-label="Flip card">
           <span class="flip-in">
-            <span class="face front"><b>Sibling</b><i>Name here</i></span>
+            <span class="face front">
+              <span class="member"><img src="images/family/sibling1.jpg" alt="Sibling" onerror="this.remove()" /></span>
+              <b>Sibling</b><i>Name here</i>
+            </span>
             <span class="face back"><p>Add a short line here.</p></span>
           </span>
         </button>
         <button class="flip" aria-label="Flip card">
           <span class="flip-in">
-            <span class="face front"><b>Sibling</b><i>Name here</i></span>
+            <span class="face front">
+              <span class="member"><img src="images/family/sibling2.jpg" alt="Sibling" onerror="this.remove()" /></span>
+              <b>Sibling</b><i>Name here</i>
+            </span>
             <span class="face back"><p>Add a short line here.</p></span>
           </span>
         </button>
@@ -274,7 +294,7 @@
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
     <div class="modal-card">
       <button class="modal-close" id="modalClose" aria-label="Close">×</button>
-      <span class="cert-icon big">★</span>
+      <img class="modal-img" id="modalImg" alt="" hidden />
       <h3 id="modalTitle"></h3>
       <p class="modal-meta" id="modalMeta"></p>
       <p id="modalDesc"></p>
