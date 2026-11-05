@@ -8,10 +8,10 @@ window.addEventListener("load", () => {
   setTimeout(() => $("#splash").classList.add("done"), 1500);
 });
 
-/* ---------- Theme ---------- */
+/* ---------- Theme (dark by default for a bolder first impression) ---------- */
 const root = document.documentElement;
 const savedTheme = (() => { try { return localStorage.getItem("theme"); } catch { return null; } })();
-if (savedTheme) root.dataset.theme = savedTheme;
+root.dataset.theme = savedTheme || "dark";
 $("#themeToggle").addEventListener("click", () => {
   const next = root.dataset.theme === "dark" ? "light" : "dark";
   root.dataset.theme = next;
@@ -50,6 +50,7 @@ function go(id, push = true) {
   current = id;
   pages.forEach((p) => p.classList.toggle("active", p.id === id));
   links.forEach((l) => l.classList.toggle("active", l.dataset.page === id));
+  document.body.classList.toggle("on-home", id === "home");
   movePill();
   $("#nav").classList.remove("open");
 
@@ -67,6 +68,7 @@ function go(id, push = true) {
 links.concat($$(".logo")).forEach((a) =>
   a.addEventListener("click", (e) => { e.preventDefault(); go(a.dataset.page); })
 );
+$$("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
 nextBtn.addEventListener("click", () => go(nextBtn.dataset.target));
 addEventListener("hashchange", () => go(location.hash.slice(1), false));
 addEventListener("resize", movePill);
@@ -97,65 +99,23 @@ function startTyping() {
   })();
 }
 
-/* ---------- Swinging ID badge (drag + spring physics) ---------- */
-(function badge() {
-  const zone = $("#badgeZone");
-  const swing = $("#swing");
-  const shine = $(".shine");
-  let angle = 0, vel = 0, dragging = false;
-  const MAX = 55; // degrees
-
-  // photo fallback
+/* ---------- Home photo: fallback + gentle parallax ---------- */
+(function homePhoto() {
+  const panel = $("#homePhoto");
+  const frame = $("#photoFrame");
   const img = $("#photoImg");
-  const wrap = img.parentElement;
-  const check = () => { if (!img.complete || img.naturalWidth === 0) wrap.classList.add("no-img"); };
-  img.addEventListener("error", () => wrap.classList.add("no-img"));
+
+  const check = () => { if (!img.complete || img.naturalWidth === 0) panel.classList.add("no-img"); };
+  img.addEventListener("error", () => panel.classList.add("no-img"));
   if (img.complete) check();
 
-  function pointerAngle(e) {
-    const r = zone.getBoundingClientRect();
-    const hx = r.left + r.width / 2;
-    const hy = r.top - 100; // hook position
-    const a = Math.atan2(e.clientX - hx, e.clientY - hy) * (180 / Math.PI);
-    return Math.max(-MAX, Math.min(MAX, -a * -1));
-  }
-
-  swing.addEventListener("pointerdown", (e) => {
-    dragging = true;
-    swing.classList.add("dragging");
-    swing.setPointerCapture(e.pointerId);
-    vel = 0;
+  panel.addEventListener("pointermove", (e) => {
+    const r = panel.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    frame.style.transform = `translate(${-x * 22}px, ${-y * 16}px)`;
   });
-  swing.addEventListener("pointermove", (e) => {
-    if (!dragging) return;
-    const target = -pointerAngle(e);
-    vel = (target - angle) * 0.6;
-    angle = target;
-  });
-  const release = () => { dragging = false; swing.classList.remove("dragging"); };
-  swing.addEventListener("pointerup", release);
-  swing.addEventListener("pointercancel", release);
-
-  // idle nudge so it feels alive
-  setTimeout(() => (vel += 2.2), 2200);
-
-  let last = performance.now();
-  (function frame(now) {
-    const dt = Math.min((now - last) / 16.67, 3);
-    last = now;
-    if (!dragging) {
-      const gravity = -0.045 * angle;
-      vel += gravity * dt;
-      vel *= Math.pow(0.992, dt);
-      angle += vel * dt;
-    }
-    swing.style.transform = `rotate(${angle}deg)`;
-    shine.style.setProperty("--shine", `${angle * 8 - 20}%`);
-    requestAnimationFrame(frame);
-  })(last);
-
-  // small push when hovering the badge
-  swing.addEventListener("pointerenter", () => { if (Math.abs(vel) < 0.5) vel += 1.2; });
+  panel.addEventListener("pointerleave", () => (frame.style.transform = ""));
 })();
 
 /* ---------- 3D tilt on cards ---------- */
@@ -218,6 +178,17 @@ $$(".cert").forEach((c) =>
     $("#modalTitle").textContent = c.dataset.title;
     $("#modalMeta").innerHTML = c.dataset.meta;
     $("#modalDesc").textContent = c.dataset.desc;
+
+    // show the certificate image if it loads, otherwise hide the image slot
+    const mImg = $("#modalImg");
+    mImg.hidden = true;
+    if (c.dataset.img) {
+      mImg.onload = () => (mImg.hidden = false);
+      mImg.onerror = () => (mImg.hidden = true);
+      mImg.alt = c.dataset.title;
+      mImg.src = c.dataset.img;
+    }
+
     modal.hidden = false;
     $("#modalClose").focus();
   })
