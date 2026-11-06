@@ -129,34 +129,46 @@ $$(".tilt").forEach((card) => {
   card.addEventListener("pointerleave", () => (card.style.transform = ""));
 });
 
-/* ---------- About: skills + facts ---------- */
+/* --- About: Skills & Facts --- */
 const skillNotes = {
-  Java: "Building structured, object-oriented logic, console applications, and backend foundational workflows.",
-  HTML: "Structuring clean, semantic, and accessible web pages.",
-  CSS: "Designing responsive layouts, modern dark-mode themes, and smooth visual styling.",
-  JavaScript: "Adding dynamic interactivity, DOM manipulations, and logic to web applications.",
-  "VS Code": "My primary code editor for development, debugging, and terminal-driven workflows.",
+  "Java": "Building structured, object-oriented logic, console applications, and backend foundational workflows.",
+  "HTML": "Structuring clean, semantic, and accessible web pages.",
+  "CSS": "Designing responsive layouts, modern dark-mode themes, and smooth visual styling.",
+  "JavaScript": "Adding dynamic interactivity, DOM manipulations, and logic to web applications.",
+  "VS Code": "My primary code editor for development, debugging, and terminal-driven workflows."
 };
-$$(".tag-btn").forEach((b) =>
+
+const tagBtns = document.querySelectorAll(".tag-btn");
+const skillNote = document.querySelector("#skillNote");
+
+tagBtns.forEach(b => {
   b.addEventListener("click", () => {
-    $$(".tag-btn").forEach((x) => x.classList.remove("on"));
+    tagBtns.forEach(btn => btn.classList.remove("on"));
     b.classList.add("on");
-    $("#skillNote").textContent = skillNotes[b.textContent] || "";
-  })
-);
+    const key = b.textContent.trim();
+    if (skillNote) skillNote.textContent = skillNotes[key] || "";
+  });
+});
 
 const facts = [
   "Proudly from Tadian, Mountain Province, with early education completed in Balaoa and Tadian School of Arts and Trades.",
   "Passionate BSIT student at UC focused on software development and web technology.",
   "Celebrated on June 29 (born in 2008).",
-  "Enjoys minimalist, terminal-first setup and sleek dark-mode user interface design.",
+  "Enjoys minimalist, terminal-first setup and sleek dark-mode user interface design."
 ];
+
 let fi = -1;
-$("#factBtn").addEventListener("click", () => {
-  fi = (fi + 1) % facts.length;
-  $("#factText").textContent = facts[fi];
-  $("#factCount").textContent = `${fi + 1} / ${facts.length}`;
-});
+const factBtn = document.querySelector("#factBtn");
+const factText = document.querySelector("#factText");
+const factCount = document.querySelector("#factCount");
+
+if (factBtn) {
+  factBtn.addEventListener("click", () => {
+    fi = (fi + 1) % facts.length;
+    if (factText) factText.textContent = facts[fi];
+    if (factCount) factCount.textContent = `${fi + 1} / ${facts.length}`;
+  });
+}
 
 /* ---------- Certificates: filter + modal ---------- */
 $$(".filter").forEach((f) =>
