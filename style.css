@@ -163,22 +163,32 @@ body.on-home .stage { padding: 0; }
 .page.active .reveal:nth-child(7) { animation-delay: .6s; }
 @keyframes rise { to { opacity: 1; transform: none; } }
 
-/* Photo: exactly the right half of the tab */
+/* Photo: smaller framed picture inside the right half */
 .home-photo { position: relative; min-height: 100vh; overflow: hidden; background: linear-gradient(135deg, var(--accent-soft), var(--bg-2)); }
-.photo-frame { position: absolute; inset: -4%; will-change: transform; transition: transform .25s ease-out; }
+.photo-frame {
+  position: absolute;
+  inset: 14% 10% 14% 6%;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  will-change: transform;
+  transition: transform .25s ease-out;
+}
 .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; -webkit-user-drag: none; animation: kenburns 18s ease-in-out infinite alternate; }
 @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.07); } }
 .photo-fallback { position: absolute; inset: 0; display: none; place-items: center; font-family: var(--serif); font-size: clamp(6rem, 18vw, 14rem); background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .home-photo.no-img .photo-fallback { display: grid; }
 .home-photo.no-img img { display: none; }
 
-/* Fade the photo into the page + bottom shade for the caption */
+/* Shade over the photo for the caption */
 .photo-fade {
-  position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  position: absolute;
+  inset: 14% 10% 14% 6%;
+  border-radius: 28px;
+  pointer-events: none; z-index: 1;
   background:
-    linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 0%, transparent) 28%),
     linear-gradient(0deg, rgba(0,0,0,.7) 0%, transparent 38%),
-    linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 22%);
+    linear-gradient(180deg, rgba(0,0,0,.3) 0%, transparent 22%);
 }
 
 .tag { position: absolute; z-index: 2; font-family: var(--mono); font-size: .75rem; padding: 8px 15px; border-radius: 999px; background: color-mix(in srgb, var(--card) 65%, transparent); backdrop-filter: blur(12px); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--ink); animation: float 6s ease-in-out infinite; }
@@ -187,7 +197,7 @@ body.on-home .stage { padding: 0; }
 .t3 { top: 68%; left: 22%; animation-delay: -4s; }
 @keyframes float { 50% { transform: translateY(-12px); } }
 
-.photo-caption { position: absolute; z-index: 2; left: clamp(20px, 3vw, 44px); bottom: 90px; color: #fff; display: grid; gap: 4px; }
+.photo-caption { position: absolute; z-index: 2; left: calc(6% + 26px); bottom: calc(14% + 24px); color: #fff; display: grid; gap: 4px; }
 .photo-caption b { font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 1.9rem); }
 .photo-caption span { font-family: var(--mono); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
 
@@ -276,8 +286,9 @@ body.on-home .stage { padding: 0; }
   /* Photo takes the top half of the screen on phones/tablets */
   .home { grid-template-columns: 1fr; min-height: 0; }
   .home-photo { order: -1; min-height: 0; height: 50vh; }
-  .photo-fade { background: linear-gradient(0deg, var(--bg) 0%, transparent 35%), linear-gradient(180deg, rgba(0,0,0,.4) 0%, transparent 25%); }
-  .photo-caption { bottom: 40px; }
+  .photo-frame { inset: 0; border-radius: 0; box-shadow: none; }
+  .photo-fade { inset: 0; border-radius: 0; background: linear-gradient(0deg, var(--bg) 0%, transparent 35%), linear-gradient(180deg, rgba(0,0,0,.4) 0%, transparent 25%); }
+  .photo-caption { left: 24px; bottom: 40px; }
   .t1 { top: 35%; left: 8%; } .t2 { top: 55%; right: 6%; } .t3 { top: 75%; left: 12%; }
   .home-copy { padding: 30px 24px 120px; }
   .about-grid { grid-template-columns: 1fr; }
