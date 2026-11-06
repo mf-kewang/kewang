@@ -131,11 +131,11 @@ $$(".tilt").forEach((card) => {
 
 /* ---------- About: skills + facts ---------- */
 const skillNotes = {
-  Java: "Replace with a note about how you use Java.",
-  HTML: "Replace with a note about how you use HTML.",
-  CSS: "Replace with a note about how you use CSS.",
-  JavaScript: "Replace with a note about how you use JavaScript.",
-  "VS Code": "Replace with a note about how you use VS Code.",
+  Java: "Building structured, object-oriented logic, console applications, and backend foundational workflows.",
+  HTML: "Structuring clean, semantic, and accessible web pages.",
+  CSS: "Designing responsive layouts, modern dark-mode themes, and smooth visual styling.",
+  JavaScript: "Adding dynamic interactivity, DOM manipulations, and logic to web applications.",
+  "VS Code": "My primary code editor for development, debugging, and terminal-driven workflows.",
 };
 $$(".tag-btn").forEach((b) =>
   b.addEventListener("click", () => {
@@ -146,10 +146,10 @@ $$(".tag-btn").forEach((b) =>
 );
 
 const facts = [
-  "Add a fun fact about yourself here.",
-  "Add another fun fact, like a hobby or favorite food.",
-  "Add something you're currently learning.",
-  "Add a goal you're working towards.",
+  "Proudly from Tadian, Mountain Province, with early education completed in Balaoa and Tadian School of Arts and Trades.",
+  "Passionate BSIT student at UC focused on software development and web technology.",
+  "Celebrated on June 29 (born in 2008).",
+  "Enjoys minimalist, terminal-first setup and sleek dark-mode user interface design.",
 ];
 let fi = -1;
 $("#factBtn").addEventListener("click", () => {
