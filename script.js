@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
   setTimeout(() => $("#splash").classList.add("done"), 1500);
 });
 
-/* ---------- Theme (dark by default for a bolder first impression) ---------- */
+/* ---------- Theme (dark by default) ---------- */
 const root = document.documentElement;
 const savedTheme = (() => { try { return localStorage.getItem("theme"); } catch { return null; } })();
 root.dataset.theme = savedTheme || "dark";
@@ -35,6 +35,7 @@ const pages = $$(".page");
 const links = $$(".nav-link");
 const order = pages.map((p) => p.id);
 const nextBtn = $("#nextBtn");
+const backBtn = $("#backBtn");
 const pill = $("#navPill");
 let current = "home";
 
@@ -54,10 +55,14 @@ function go(id, push = true) {
   movePill();
   $("#nav").classList.remove("open");
 
-  const nextId = order[(order.indexOf(id) + 1) % order.length];
-  const nextTitle = $("#" + nextId).dataset.title;
-  nextBtn.firstChild.textContent = `Next: ${nextTitle} `;
+  const i = order.indexOf(id);
+  const nextId = order[(i + 1) % order.length];
+  nextBtn.firstChild.textContent = `Next: ${$("#" + nextId).dataset.title} `;
   nextBtn.dataset.target = nextId;
+
+  // Back button: goes to the previous tab, disabled on Home
+  backBtn.dataset.target = order[Math.max(i - 1, 0)];
+  backBtn.disabled = i === 0;
 
   document.title = `${$("#" + id).dataset.title} | Mariam Fatima Kewang`;
   if (push) history.replaceState(null, "", "#" + id);
@@ -70,6 +75,7 @@ links.concat($$(".logo")).forEach((a) =>
 );
 $$("[data-go]").forEach((b) => b.addEventListener("click", () => go(b.dataset.go)));
 nextBtn.addEventListener("click", () => go(nextBtn.dataset.target));
+backBtn.addEventListener("click", () => { if (!backBtn.disabled) go(backBtn.dataset.target); });
 addEventListener("hashchange", () => go(location.hash.slice(1), false));
 addEventListener("resize", movePill);
 addEventListener("keydown", (e) => {
@@ -118,80 +124,19 @@ function startTyping() {
   panel.addEventListener("pointerleave", () => (frame.style.transform = ""));
 })();
 
-/* ---------- 3D tilt on cards ---------- */
-$$(".tilt").forEach((card) => {
-  card.addEventListener("pointermove", (e) => {
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    card.style.transform = `perspective(800px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) translateY(-4px)`;
-  });
-  card.addEventListener("pointerleave", () => (card.style.transform = ""));
-});
-
-/* --- About: Skills & Facts --- */
-const skillNotes = {
-  "Java": "Building structured, object-oriented logic, console applications, and backend foundational workflows.",
-  "HTML": "Structuring clean, semantic, and accessible web pages.",
-  "CSS": "Designing responsive layouts, modern dark-mode themes, and smooth visual styling.",
-  "JavaScript": "Adding dynamic interactivity, DOM manipulations, and logic to web applications.",
-  "VS Code": "My primary code editor for development, debugging, and terminal-driven workflows."
-};
-
-const tagBtns = document.querySelectorAll(".tag-btn");
-const skillNote = document.querySelector("#skillNote");
-
-tagBtns.forEach(b => {
-  b.addEventListener("click", () => {
-    tagBtns.forEach(btn => btn.classList.remove("on"));
-    b.classList.add("on");
-    const key = b.textContent.trim();
-    if (skillNote) skillNote.textContent = skillNotes[key] || "";
-  });
-});
-
-const facts = [
-  "Proudly from Tadian, Mountain Province, with early education completed in Balaoa and Tadian School of Arts and Trades.",
-  "Passionate BSIT student at UC focused on software development and web technology.",
-  "Celebrated on June 29 (born in 2008).",
-  "Enjoys minimalist, terminal-first setup and sleek dark-mode user interface design."
-];
-
-let fi = -1;
-const factBtn = document.querySelector("#factBtn");
-const factText = document.querySelector("#factText");
-const factCount = document.querySelector("#factCount");
-
-if (factBtn) {
-  factBtn.addEventListener("click", () => {
-    fi = (fi + 1) % facts.length;
-    if (factText) factText.textContent = facts[fi];
-    if (factCount) factCount.textContent = `${fi + 1} / ${facts.length}`;
-  });
-}
-
-/* ---------- Certificates: filter + modal ---------- */
-$$(".filter").forEach((f) =>
-  f.addEventListener("click", () => {
-    $$(".filter").forEach((x) => x.classList.remove("active"));
-    f.classList.add("active");
-    $$(".cert").forEach((c) =>
-      c.classList.toggle("hide", f.dataset.filter !== "all" && c.dataset.cat !== f.dataset.filter)
-    );
-  })
-);
-
+/* ---------- Achievements: click an item to see its picture ---------- */
 const modal = $("#modal");
 let lastFocus = null;
 function closeModal() { modal.hidden = true; lastFocus && lastFocus.focus(); }
-$$(".cert").forEach((c) =>
+
+$$(".ach-item").forEach((c) =>
   c.addEventListener("click", () => {
     lastFocus = c;
     $("#modalTitle").textContent = c.dataset.title;
     $("#modalMeta").innerHTML = c.dataset.meta;
     $("#modalDesc").textContent = c.dataset.desc;
 
-    // show the certificate image if it loads, otherwise hide the image slot
+    // show the picture if it loads, otherwise hide the image slot
     const mImg = $("#modalImg");
     mImg.hidden = true;
     if (c.dataset.img) {
@@ -208,9 +153,6 @@ $$(".cert").forEach((c) =>
 $("#modalClose").addEventListener("click", closeModal);
 modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
 addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) closeModal(); });
-
-/* ---------- Family: flip cards ---------- */
-$$(".flip").forEach((f) => f.addEventListener("click", () => f.classList.toggle("flipped")));
 
 /* ---------- Init ---------- */
 $("#year").textContent = new Date().getFullYear();
