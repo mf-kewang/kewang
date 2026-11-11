@@ -29,10 +29,9 @@
     <nav class="nav" id="nav" aria-label="Main">
       <span class="nav-pill" id="navPill"></span>
       <a href="#home" data-page="home" class="nav-link active">Home</a>
-      <a href="#about" data-page="about" class="nav-link">About Me</a>
-      <a href="#education" data-page="education" class="nav-link">Educational Attainment</a>
-      <a href="#certificates" data-page="certificates" class="nav-link">Certificates</a>
-      <a href="#family" data-page="family" class="nav-link">Family</a>
+      <a href="#personal" data-page="personal" class="nav-link">Personal Information</a>
+      <a href="#achievements" data-page="achievements" class="nav-link">Achievements</a>
+      <a href="#family" data-page="family" class="nav-link">Family &amp; Friends</a>
     </nav>
 
     <button class="icon-btn" id="themeToggle" aria-label="Toggle light and dark theme" title="Toggle theme">
@@ -67,8 +66,8 @@
           </p>
 
           <div class="cta reveal">
-            <button class="btn-primary" id="ctaAbout" data-go="about">Get to know me <span>→</span></button>
-            <button class="btn-ghost" id="ctaCerts" data-go="certificates">View certificates</button>
+            <button class="btn-primary" id="ctaAbout" data-go="personal">Get to know me <span>→</span></button>
+            <button class="btn-ghost" id="ctaAch" data-go="achievements">View achievements</button>
           </div>
 
           <div class="socials reveal">
@@ -99,7 +98,6 @@
         <!-- Right half: photo -->
         <div class="home-photo" id="homePhoto">
           <div class="photo-frame" id="photoFrame">
-            <!-- Put your picture at images/123.jpg -->
             <img src="images/mariampfp.jpg" alt="Portrait of Mariam Fatima Kewang" id="photoImg" />
             <div class="photo-fallback" id="photoFallback">MFK</div>
           </div>
@@ -118,168 +116,192 @@
       </div>
     </section>
 
-    <!-- ============ ABOUT ============ -->
-    <section class="page" id="about" data-title="About Me">
-      <div class="page-head">
-        <p class="eyebrow">01 / About</p>
-        <h2>A little about me</h2>
-      </div>
+    <!-- ============ PERSONAL INFORMATION ============ -->
+    <section class="page" id="personal" data-title="Personal Information">
+      <div class="personal">
 
-      <div class="about-grid">
-        <article class="card tilt">
-          <h3>Who I am</h3>
-          <p>
-            I’m Mariam Fatima Kewang, born on June 29, 2008, and raised in the scenic town of Tadian, Mountain Province.
-            I completed my elementary education in Balaoa, Tadian, and finished secondary school at the Tadian School of Arts and Trades.
-            Rooted in the rich heritage and values of my hometown, I carry a strong work ethic and deep appreciation for community into everything I do.
-          </p>
-          <p>
-            Currently, I am an aspiring Bachelor of Science in Information Technology (BSIT) student at the University of Cordilleras (UC).
-            Driven by a curiosity for how systems work and how technology can solve real-world problems,
-            I am continuously building my skills in web development, programming, and software engineering with the goal of creating clean, impactful digital solutions.
-          </p>
-        </article>
+        <!-- Left: title -->
+        <aside class="p-side">
+          <p class="code">&lt;about /&gt;</p>
+          <h2>Personal <span class="accent">Information</span></h2>
+          <p class="side-text">A little more about who I am, what I enjoy, and what I bring to the table.</p>
+        </aside>
 
-        <article class="card tilt">
-          <h3>What I work with</h3>
-          <div class="tags" id="skillTags">
-            <button class="tag-btn">Java</button>
-            <button class="tag-btn">HTML</button>
-            <button class="tag-btn">CSS</button>
-            <button class="tag-btn">JavaScript</button>
-            <button class="tag-btn">VS Code</button>
+        <!-- Right: content -->
+        <div class="p-main">
+
+          <div class="p-block">
+            <h3 class="sec-title"><i>//</i> About Me</h3>
+            <p>
+              Hi, I'm <span class="accent">Mariam Fatima Kewang</span>, born on June 29, 2008 and raised in the scenic town of
+              Tadian, Mountain Province. I finished elementary in Balaoa, Tadian, and secondary school at the Tadian School of Arts and Trades.
+            </p>
+            <p>
+              I'm an aspiring Bachelor of Science in Information Technology (BSIT) student at the University of the Cordilleras (UC),
+              curious about how systems work and driven to build clean, impactful digital solutions.
+            </p>
           </div>
-          <p class="skill-note" id="skillNote">Tap a skill to see a note about it.</p>
-        </article>
 
-        <article class="card tilt wide">
-          <h3>Quick facts <small>(click to flip through)</small></h3>
-          <button class="fact" id="factBtn" aria-live="polite">
-            <span id="factText">Click me for a random fact.</span>
-            <em id="factCount">1 / 4</em>
-          </button>
-        </article>
-      </div>
-    </section>
+          <div class="profile">
+            <h3 class="sec-title"><i>//</i> My Profile</h3>
+            <div class="profile-grid">
+              <div class="row"><span>Full Name</span><b>Mariam Fatima Kewang</b></div>
+              <div class="row"><span>Course</span><b>Bachelor of Science in Information Technology</b></div>
+              <div class="row"><span>School</span><b>University of the Cordilleras</b></div>
+              <div class="row"><span>Birthday</span><b>June 29, 2008</b></div>
+            </div>
+          </div>
 
-    <!-- ============ EDUCATION ============ -->
-    <section class="page" id="education" data-title="Educational Attainment">
-      <div class="page-head">
-        <p class="eyebrow">02 / Education</p>
-        <h2>Educational attainment</h2>
-      </div>
+          <!-- Edit the list items below to make them yours -->
+          <div class="three">
+            <div>
+              <h3 class="sec-title"><i>//</i> Interests</h3>
+              <ul class="plist">
+                <li>Web development</li>
+                <li>Programming and problem solving</li>
+                <li>Software engineering</li>
+                <li>Technology and gadgets</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="sec-title"><i>//</i> Hobbies</h3>
+              <ul class="plist">
+                <li>Add your hobby here</li>
+                <li>Add your hobby here</li>
+                <li>Add your hobby here</li>
+                <li>Add your hobby here</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="sec-title"><i>//</i> Strengths</h3>
+              <ul class="plist">
+                <li>Add a strength here</li>
+                <li>Add a strength here</li>
+                <li>Add a strength here</li>
+                <li>Add a strength here</li>
+              </ul>
+            </div>
+          </div>
 
-      <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-dot"></span>
-          <div class="card">
-            <span class="tl-year">Present</span>
-            <h3>College</h3>
-            <p>University of the Cordilleras (UC) &middot; Bachelor of Science in Information Technology</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <span class="tl-dot"></span>
-          <div class="card">
-            <span class="tl-year">Secondary</span>
-            <h3>High School</h3>
-            <p>Tadian School of Arts and Trades &middot; Tadian, Mountain Province</p>
-          </div>
-        </div>
-        <div class="tl-item">
-          <span class="tl-dot"></span>
-          <div class="card">
-            <span class="tl-year">Elementary</span>
-            <h3>Elementary School</h3>
-            <p>Balaoa Elementary School &middot; Balaoa, Tadian, Mountain Province</p>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ CERTIFICATES ============ -->
-    <section class="page" id="certificates" data-title="Certificates">
+    <!-- ============ ACHIEVEMENTS ============ -->
+    <section class="page" id="achievements" data-title="Achievements">
       <div class="page-head">
-        <p class="eyebrow">03 / Certificates</p>
-        <h2>Certificates &amp; recognitions</h2>
+        <p class="eyebrow">02 / Achievements</p>
+        <h2>My achievements</h2>
       </div>
 
-      <div class="filters" id="filters">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="tech">Tech</button>
-        <button class="filter" data-filter="academic">Academic</button>
-      </div>
+      <!--
+        HOW TO ADD PICTURES: put images in images/achievements/ and change data-img + the <img src>.
+        Keep about 3 items per column so everything fits on one screen without scrolling.
+        Click any item on the site to see its picture bigger.
+      -->
+      <div class="ach">
 
-      <div class="cert-grid" id="certGrid">
-        <!-- To add your own: change data-img, the <img src>, and the text. Images go in images/certs/ -->
-        <button class="cert card" data-cat="tech" data-img="images/certs/cert1.jpg" data-title="Certificate Title 1" data-meta="Issuer &middot; Month 20XX" data-desc="Describe what you learned or achieved with this certificate.">
-          <span class="cert-thumb"><img src="images/certs/cert1.jpg" alt="Certificate Title 1" onerror="this.remove()" /></span>
-          <h3>Certificate Title 1</h3>
-          <p>Issuer &middot; 20XX</p>
-        </button>
-        <button class="cert card" data-cat="tech" data-img="images/certs/cert2.jpg" data-title="Certificate Title 2" data-meta="Issuer &middot; Month 20XX" data-desc="Describe what you learned or achieved with this certificate.">
-          <span class="cert-thumb"><img src="images/certs/cert2.jpg" alt="Certificate Title 2" onerror="this.remove()" /></span>
-          <h3>Certificate Title 2</h3>
-          <p>Issuer &middot; 20XX</p>
-        </button>
-        <button class="cert card" data-cat="academic" data-img="images/certs/cert3.jpg" data-title="Academic Award" data-meta="School &middot; Month 20XX" data-desc="Describe what you received this recognition for.">
-          <span class="cert-thumb"><img src="images/certs/cert3.jpg" alt="Academic Award" onerror="this.remove()" /></span>
-          <h3>Academic Award</h3>
-          <p>School &middot; 20XX</p>
-        </button>
-        <button class="cert card" data-cat="academic" data-img="images/certs/cert4.jpg" data-title="Seminar Participation" data-meta="Organizer &middot; Month 20XX" data-desc="Describe the seminar and what you took away from it.">
-          <span class="cert-thumb"><img src="images/certs/cert4.jpg" alt="Seminar Participation" onerror="this.remove()" /></span>
-          <h3>Seminar Participation</h3>
-          <p>Organizer &middot; 20XX</p>
-        </button>
+        <!-- Educational Attainment -->
+        <section class="card ach-col">
+          <h3>Educational Attainment</h3>
+          <div class="ach-list">
+            <button class="ach-item" data-img="images/achievements/college.jpg" data-title="College" data-meta="University of the Cordilleras &middot; Present" data-desc="Bachelor of Science in Information Technology.">
+              <span class="ach-thumb"><img src="images/achievements/college.jpg" alt="College" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>College</b><small>University of the Cordilleras · BSIT (Present)</small></span>
+            </button>
+            <button class="ach-item" data-img="images/achievements/highschool.jpg" data-title="High School" data-meta="Tadian School of Arts and Trades" data-desc="Completed secondary education in Tadian, Mountain Province.">
+              <span class="ach-thumb"><img src="images/achievements/highschool.jpg" alt="High School" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>High School</b><small>Tadian School of Arts and Trades</small></span>
+            </button>
+            <button class="ach-item" data-img="images/achievements/elementary.jpg" data-title="Elementary" data-meta="Balaoa Elementary School" data-desc="Completed elementary education in Balaoa, Tadian, Mountain Province.">
+              <span class="ach-thumb"><img src="images/achievements/elementary.jpg" alt="Elementary" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Elementary</b><small>Balaoa Elementary School</small></span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Awards -->
+        <section class="card ach-col">
+          <h3>Awards</h3>
+          <div class="ach-list">
+            <button class="ach-item" data-img="images/achievements/award1.jpg" data-title="Award Title 1" data-meta="School &middot; Year" data-desc="Describe what you received this award for.">
+              <span class="ach-thumb"><img src="images/achievements/award1.jpg" alt="Award Title 1" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Award Title 1</b><small>Issuer · Year</small></span>
+            </button>
+            <button class="ach-item" data-img="images/achievements/award2.jpg" data-title="Award Title 2" data-meta="School &middot; Year" data-desc="Describe what you received this award for.">
+              <span class="ach-thumb"><img src="images/achievements/award2.jpg" alt="Award Title 2" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Award Title 2</b><small>Issuer · Year</small></span>
+            </button>
+            <button class="ach-item" data-img="images/achievements/award3.jpg" data-title="Award Title 3" data-meta="School &middot; Year" data-desc="Describe what you received this award for.">
+              <span class="ach-thumb"><img src="images/achievements/award3.jpg" alt="Award Title 3" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Award Title 3</b><small>Issuer · Year</small></span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Extracurricular Achievements -->
+        <section class="card ach-col">
+          <h3>Extracurricular Achievements</h3>
+          <div class="ach-list">
+            <button class="ach-item" data-img="images/achievements/extra1.jpg" data-title="Activity Title 1" data-meta="Organization &middot; Year" data-desc="Describe the activity and what you achieved.">
+              <span class="ach-thumb"><img src="images/achievements/extra1.jpg" alt="Activity Title 1" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Activity Title 1</b><small>Organization · Year</small></span>
+            </button>
+            <button class="ach-item" data-img="images/achievements/extra2.jpg" data-title="Activity Title 2" data-meta="Organization &middot; Year" data-desc="Describe the activity and what you achieved.">
+              <span class="ach-thumb"><img src="images/achievements/extra2.jpg" alt="Activity Title 2" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Activity Title 2</b><small>Organization · Year</small></span>
+            </button>
+            <button class="ach-item" data-img="images/achievements/extra3.jpg" data-title="Activity Title 3" data-meta="Organization &middot; Year" data-desc="Describe the activity and what you achieved.">
+              <span class="ach-thumb"><img src="images/achievements/extra3.jpg" alt="Activity Title 3" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Activity Title 3</b><small>Organization · Year</small></span>
+            </button>
+          </div>
+        </section>
+
       </div>
     </section>
 
-    <!-- ============ FAMILY ============ -->
-    <section class="page" id="family" data-title="Family">
+    <!-- ============ FAMILY & FRIENDS ============ -->
+    <section class="page" id="family" data-title="Family & Friends">
       <div class="page-head">
-        <p class="eyebrow">04 / Family</p>
+        <p class="eyebrow">03 / Family &amp; Friends</p>
         <h2>The people behind me</h2>
       </div>
 
-      <div class="family-grid">
-        <!-- Family photos go in images/family/ -->
-        <button class="flip" aria-label="Flip card">
-          <span class="flip-in">
-            <span class="face front">
-              <span class="member"><img src="images/family/mother.jpg" alt="Mother" onerror="this.remove()" /></span>
-              <b>Mother</b><i>Name here</i>
-            </span>
-            <span class="face back"><p>Add a short line about her.</p></span>
-          </span>
-        </button>
-        <button class="flip" aria-label="Flip card">
-          <span class="flip-in">
-            <span class="face front">
-              <span class="member"><img src="images/family/father.jpg" alt="Father" onerror="this.remove()" /></span>
-              <b>Father</b><i>Name here</i>
-            </span>
-            <span class="face back"><p>Add a short line about him.</p></span>
-          </span>
-        </button>
-        <button class="flip" aria-label="Flip card">
-          <span class="flip-in">
-            <span class="face front">
-              <span class="member"><img src="images/family/sibling1.jpg" alt="Sibling" onerror="this.remove()" /></span>
-              <b>Sibling</b><i>Name here</i>
-            </span>
-            <span class="face back"><p>Add a short line here.</p></span>
-          </span>
-        </button>
-        <button class="flip" aria-label="Flip card">
-          <span class="flip-in">
-            <span class="face front">
-              <span class="member"><img src="images/family/sibling2.jpg" alt="Sibling" onerror="this.remove()" /></span>
-              <b>Sibling</b><i>Name here</i>
-            </span>
-            <span class="face back"><p>Add a short line here.</p></span>
-          </span>
-        </button>
+      <!-- Photos go in images/family/ . Change the caption text under each picture. -->
+      <div class="gallery">
+        <figure class="shot">
+          <img src="images/family/mother.jpg" alt="Mother" onerror="this.remove()" />
+          <figcaption><b>Mother</b><span>Short caption here</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/family/father.jpg" alt="Father" onerror="this.remove()" />
+          <figcaption><b>Father</b><span>Short caption here</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/family/sibling1.jpg" alt="Sibling" onerror="this.remove()" />
+          <figcaption><b>Sibling</b><span>Short caption here</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/family/sibling2.jpg" alt="Sibling" onerror="this.remove()" />
+          <figcaption><b>Sibling</b><span>Short caption here</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/family/friend1.jpg" alt="Friend" onerror="this.remove()" />
+          <figcaption><b>Friend</b><span>Short caption here</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/family/friend2.jpg" alt="Friend" onerror="this.remove()" />
+          <figcaption><b>Friend</b><span>Short caption here</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/family/friend3.jpg" alt="Friend" onerror="this.remove()" />
+          <figcaption><b>Friend</b><span>Short caption here</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="images/family/friend4.jpg" alt="Friend" onerror="this.remove()" />
+          <figcaption><b>Friend</b><span>Short caption here</span></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -287,10 +309,13 @@
 
   <footer class="foot">
     <span>&copy; <span id="year">2026</span> Mariam Fatima Kewang</span>
-    <button class="next" id="nextBtn">Next: About Me <span>→</span></button>
+    <div class="foot-nav">
+      <button class="back" id="backBtn" aria-label="Go back"><span>←</span> Back</button>
+      <button class="next" id="nextBtn">Next: Personal Information <span>→</span></button>
+    </div>
   </footer>
 
-  <!-- Certificate modal -->
+  <!-- Achievement picture modal -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
     <div class="modal-card">
       <button class="modal-close" id="modalClose" aria-label="Close">×</button>
