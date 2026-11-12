@@ -130,25 +130,17 @@
         <!-- Right: content -->
         <div class="p-main">
 
-          <div class="p-block">
-            <h3 class="sec-title"><i>//</i> About Me</h3>
-            <p>
-              Hi, I'm <span class="accent">Mariam Fatima Kewang</span>, born on June 29, 2008 and raised in the scenic town of
-              Tadian, Mountain Province. I finished elementary in Balaoa, Tadian, and secondary school at the Tadian School of Arts and Trades.
-            </p>
-            <p>
-              I'm an aspiring Bachelor of Science in Information Technology (BSIT) student at the University of the Cordilleras (UC),
-              curious about how systems work and driven to build clean, impactful digital solutions.
-            </p>
-          </div>
-
           <div class="profile">
             <h3 class="sec-title"><i>//</i> My Profile</h3>
             <div class="profile-grid">
               <div class="row"><span>Full Name</span><b>Mariam Fatima Kewang</b></div>
+              <div class="row"><span>Birthday</span><b>June 29, 2008</b></div>
+              <div class="row"><span>Hometown</span><b>Tadian, Mountain Province</b></div>
+              <div class="row"><span>Email</span><b>mariamfatimakewang29@gmail.com</b></div>
               <div class="row"><span>Course</span><b>Bachelor of Science in Information Technology</b></div>
               <div class="row"><span>School</span><b>University of the Cordilleras</b></div>
-              <div class="row"><span>Birthday</span><b>June 29, 2008</b></div>
+              <div class="row"><span>Elementary</span><b>Balaoa Elementary School</b></div>
+              <div class="row"><span>High School</span><b>Tadian School of Arts and Trades</b></div>
             </div>
           </div>
 
@@ -166,19 +158,19 @@
             <div>
               <h3 class="sec-title"><i>//</i> Hobbies</h3>
               <ul class="plist">
-                <li>Add your hobby here</li>
-                <li>Add your hobby here</li>
-                <li>Add your hobby here</li>
-                <li>Add your hobby here</li>
+                <li>Coding personal projects</li>
+                <li>Listening to music</li>
+                <li>Watching movies and series</li>
+                <li>Exploring the outdoors</li>
               </ul>
             </div>
             <div>
               <h3 class="sec-title"><i>//</i> Strengths</h3>
               <ul class="plist">
-                <li>Add a strength here</li>
-                <li>Add a strength here</li>
-                <li>Add a strength here</li>
-                <li>Add a strength here</li>
+                <li>Quick learner</li>
+                <li>Problem solving</li>
+                <li>Attention to detail</li>
+                <li>Creative thinking</li>
               </ul>
             </div>
           </div>
@@ -195,8 +187,8 @@
       </div>
 
       <!--
-        HOW TO ADD PICTURES: put images in images/achievements/ and change data-img + the <img src>.
-        Keep about 3 items per column so everything fits on one screen without scrolling.
+        HOW TO ADD PICTURES: put images in images/ and change data-img + the <img src>.
+        Each column holds up to 4 items so everything fits on one screen without scrolling.
         Click any item on the site to see its picture bigger.
       -->
       <div class="ach">
@@ -205,55 +197,86 @@
         <section class="card ach-col">
           <h3>Educational Attainment</h3>
           <div class="ach-list">
-            <button class="ach-item" data-img="images/achievements/college.jpg" data-title="College" data-meta="University of the Cordilleras &middot; Present" data-desc="Bachelor of Science in Information Technology.">
-              <span class="ach-thumb"><img src="images/achievements/college.jpg" alt="College" onerror="this.remove()" /></span>
-              <span class="ach-text"><b>College</b><small>University of the Cordilleras · BSIT (Present)</small></span>
+            <button class="ach-item" data-img="images/uc-logo.png" data-title="College" data-meta="University of the Cordilleras · Present" data-desc="Currently taking up a Bachelor of Science in Information Technology.">
+              <span class="ach-thumb logo"><img src="images/uc-logo.png" alt="College" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>College</b><small>University of the Cordilleras<br>BSIT · Present</small></span>
             </button>
-            <button class="ach-item" data-img="images/achievements/highschool.jpg" data-title="High School" data-meta="Tadian School of Arts and Trades" data-desc="Completed secondary education in Tadian, Mountain Province.">
-              <span class="ach-thumb"><img src="images/achievements/highschool.jpg" alt="High School" onerror="this.remove()" /></span>
-              <span class="ach-text"><b>High School</b><small>Tadian School of Arts and Trades</small></span>
+            <button class="ach-item" data-img="images/shs-diploma.jpg" data-title="Senior High School" data-meta="Tadian School of Arts and Trades · 2026" data-desc="Graduated from the Academic Track, STEM strand, on March 31, 2026 with a General Weighted Average of 93, With Honors.">
+              <span class="ach-thumb logo"><img src="images/logo-tsat.png" alt="Senior High School" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Senior High School</b><small>Tadian School of Arts and Trades<br>STEM · 2026</small></span>
             </button>
-            <button class="ach-item" data-img="images/achievements/elementary.jpg" data-title="Elementary" data-meta="Balaoa Elementary School" data-desc="Completed elementary education in Balaoa, Tadian, Mountain Province.">
-              <span class="ach-thumb"><img src="images/achievements/elementary.jpg" alt="Elementary" onerror="this.remove()" /></span>
+            <button class="ach-item" data-img="images/jhs-certificate.jpg" data-title="Junior High School" data-meta="Tadian School of Arts and Trades · 2024" data-desc="Completed the Junior High School curriculum on May 29, 2024.">
+              <span class="ach-thumb logo"><img src="images/logo-tsat.png" alt="Junior High School" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Junior High School</b><small>Tadian School of Arts and Trades<br>2024</small></span>
+            </button>
+            <button class="ach-item" data-img="images/logo-balaoa-es.png" data-title="Elementary" data-meta="Balaoa Elementary School" data-desc="Completed elementary education in Balaoa, Tadian, Mountain Province.">
+              <span class="ach-thumb cover"><img src="images/logo-balaoa-es.png" alt="Elementary" onerror="this.remove()" /></span>
               <span class="ach-text"><b>Elementary</b><small>Balaoa Elementary School</small></span>
             </button>
           </div>
         </section>
 
-        <!-- Awards -->
+        <!-- Academic Honors -->
         <section class="card ach-col">
-          <h3>Awards</h3>
+          <h3>Academic Honors</h3>
           <div class="ach-list">
-            <button class="ach-item" data-img="images/achievements/award1.jpg" data-title="Award Title 1" data-meta="School &middot; Year" data-desc="Describe what you received this award for.">
-              <span class="ach-thumb"><img src="images/achievements/award1.jpg" alt="Award Title 1" onerror="this.remove()" /></span>
-              <span class="ach-text"><b>Award Title 1</b><small>Issuer · Year</small></span>
+            <button class="ach-item" data-img="images/shs-certification.jpg" data-title="Graduated With Honors" data-meta="Tadian School of Arts and Trades · SY 2025–2026" data-desc="General Weighted Average of 93, With Honors. Top 3 out of 180 Grade 12 students, Top 3 out of 65 STEM students, and Best in Science.">
+              <span class="ach-thumb doc"><img src="images/shs-certification.jpg" alt="Graduated With Honors" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Graduated With Honors</b><small>Top 3 of 180 · GWA 93 · 2026</small></span>
             </button>
-            <button class="ach-item" data-img="images/achievements/award2.jpg" data-title="Award Title 2" data-meta="School &middot; Year" data-desc="Describe what you received this award for.">
-              <span class="ach-thumb"><img src="images/achievements/award2.jpg" alt="Award Title 2" onerror="this.remove()" /></span>
-              <span class="ach-text"><b>Award Title 2</b><small>Issuer · Year</small></span>
+            <button class="ach-item" data-img="images/grade12-honors.jpg" data-title="Grade 12 With Honors" data-meta="Tadian School of Arts and Trades · SY 2025–2026" data-desc="Academic Performance Award for Grade 12 – Euphorbia, with an average of 92%. Given on March 31, 2026.">
+              <span class="ach-thumb doc"><img src="images/grade12-honors.jpg" alt="Grade 12 With Honors" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Grade 12 With Honors</b><small>92% · SY 2025–2026</small></span>
             </button>
-            <button class="ach-item" data-img="images/achievements/award3.jpg" data-title="Award Title 3" data-meta="School &middot; Year" data-desc="Describe what you received this award for.">
-              <span class="ach-thumb"><img src="images/achievements/award3.jpg" alt="Award Title 3" onerror="this.remove()" /></span>
-              <span class="ach-text"><b>Award Title 3</b><small>Issuer · Year</small></span>
+            <button class="ach-item" data-img="images/grade11-honors.jpg" data-title="Grade 11 With Honors" data-meta="Tadian School of Arts and Trades · SY 2024–2025" data-desc="Academic Performance Award for Grade 11 – Feldspar, with an average of 93%. Given on April 14, 2025.">
+              <span class="ach-thumb doc"><img src="images/grade11-honors.jpg" alt="Grade 11 With Honors" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Grade 11 With Honors</b><small>93% · SY 2024–2025</small></span>
+            </button>
+            <button class="ach-item" data-img="images/grade10-honors.jpg" data-title="Grade 10 With Honors" data-meta="Tadian School of Arts and Trades · SY 2023–2024" data-desc="Certificate of Academic Excellence for Grade 10, with an average of 94%. Given on May 29, 2024.">
+              <span class="ach-thumb doc"><img src="images/grade10-honors.jpg" alt="Grade 10 With Honors" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Grade 10 With Honors</b><small>94% · SY 2023–2024</small></span>
             </button>
           </div>
         </section>
 
-        <!-- Extracurricular Achievements -->
+        <!-- Special Awards -->
         <section class="card ach-col">
-          <h3>Extracurricular Achievements</h3>
+          <h3>Special Awards</h3>
           <div class="ach-list">
-            <button class="ach-item" data-img="images/achievements/extra1.jpg" data-title="Activity Title 1" data-meta="Organization &middot; Year" data-desc="Describe the activity and what you achieved.">
-              <span class="ach-thumb"><img src="images/achievements/extra1.jpg" alt="Activity Title 1" onerror="this.remove()" /></span>
-              <span class="ach-text"><b>Activity Title 1</b><small>Organization · Year</small></span>
+            <button class="ach-item" data-img="images/medal-best-science.jpg" data-title="Best in Science" data-meta="Tadian School of Arts and Trades · 2026" data-desc="Best in Science medal received in Grade 12.">
+              <span class="ach-thumb medal"><img src="images/medal-best-science.jpg" alt="Best in Science" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Best in Science</b><small>Medal · Grade 12 · Class of 2026</small></span>
             </button>
-            <button class="ach-item" data-img="images/achievements/extra2.jpg" data-title="Activity Title 2" data-meta="Organization &middot; Year" data-desc="Describe the activity and what you achieved.">
-              <span class="ach-thumb"><img src="images/achievements/extra2.jpg" alt="Activity Title 2" onerror="this.remove()" /></span>
-              <span class="ach-text"><b>Activity Title 2</b><small>Organization · Year</small></span>
+            <button class="ach-item" data-img="images/medal-research-presenter.jpg" data-title="Best Research Presenter" data-meta="Tadian School of Arts and Trades · 2026" data-desc="Best Research Presenter medal received in Grade 12.">
+              <span class="ach-thumb medal"><img src="images/medal-research-presenter.jpg" alt="Best Research Presenter" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Best Research Presenter</b><small>Medal · Grade 12 · Class of 2026</small></span>
             </button>
-            <button class="ach-item" data-img="images/achievements/extra3.jpg" data-title="Activity Title 3" data-meta="Organization &middot; Year" data-desc="Describe the activity and what you achieved.">
-              <span class="ach-thumb"><img src="images/achievements/extra3.jpg" alt="Activity Title 3" onerror="this.remove()" /></span>
-              <span class="ach-text"><b>Activity Title 3</b><small>Organization · Year</small></span>
+            <button class="ach-item" data-img="images/medal-board-display.jpg" data-title="Best in Board Display" data-meta="Tadian School of Arts and Trades · 2026" data-desc="Best in Board Display medal received in Grade 12.">
+              <span class="ach-thumb medal"><img src="images/medal-board-display.jpg" alt="Best in Board Display" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Best in Board Display</b><small>Medal · Grade 12 · Class of 2026</small></span>
+            </button>
+            <button class="ach-item" data-img="images/perfect-attendance.jpg" data-title="Perfect Attendance" data-meta="Tadian School of Arts and Trades · SY 2023–2024" data-desc="Perfect Attendance Award of Grade 10 – Bravery for the First Quarter. Given on November 13, 2023.">
+              <span class="ach-thumb doc"><img src="images/perfect-attendance.jpg" alt="Perfect Attendance" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Perfect Attendance</b><small>Grade 10 · 1st Quarter · SY 2023–2024</small></span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Conduct & Community -->
+        <section class="card ach-col">
+          <h3>Conduct &amp; Community</h3>
+          <div class="ach-list">
+            <button class="ach-item" data-img="images/conduct-award.jpg" data-title="Conduct Award" data-meta="Tadian School of Arts and Trades · SY 2024–2025" data-desc="Awarded for consistently and dutifully carrying out the core values of the Department of Education. Given on April 14, 2025.">
+              <span class="ach-thumb doc"><img src="images/conduct-award.jpg" alt="Conduct Award" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Conduct Award</b><small>Core values of DepEd · SY 2024–2025</small></span>
+            </button>
+            <button class="ach-item" data-img="images/rescue-olympics.jpg" data-title="Municipal Rescue Olympics" data-meta="Municipal Government of Tadian · 2025" data-desc="Certificate of Recognition for outstanding performance and effort as part of the TSAT Team during the First Municipal Rescue Olympics on March 27, 2025, in collaboration with the Bureau of Fire Protection, Tadian Fire Station.">
+              <span class="ach-thumb doc"><img src="images/rescue-olympics.jpg" alt="Municipal Rescue Olympics" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Municipal Rescue Olympics</b><small>TSAT Team · March 2025</small></span>
+            </button>
+            <button class="ach-item" data-img="images/pass-in-review.jpg" data-title="Ayyoweng Pass-in-Review" data-meta="Municipal Government of Tadian · 2024" data-desc="Certificate of Appreciation for participating in the Pass-in-Review on March 1, 2024 during the 16th Ayyoweng di Lambak Ed Tadian.">
+              <span class="ach-thumb doc"><img src="images/pass-in-review.jpg" alt="Ayyoweng Pass-in-Review" onerror="this.remove()" /></span>
+              <span class="ach-text"><b>Ayyoweng Pass-in-Review</b><small>Certificate of Appreciation · 2024</small></span>
             </button>
           </div>
         </section>
