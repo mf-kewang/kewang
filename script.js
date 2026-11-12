@@ -154,6 +154,35 @@ $("#modalClose").addEventListener("click", closeModal);
 modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
 addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) closeModal(); });
 
+
+/* ---------- Achievements: hover peek (bigger picture beside the item) ---------- */
+(function peek() {
+  const box = document.createElement("div");
+  box.className = "peek";
+  box.innerHTML = '<img alt="" />';
+  document.body.appendChild(box);
+  const pi = box.firstChild;
+  const hide = () => box.classList.remove("show");
+  $$(".ach-item").forEach((c) => {
+    if (!c.dataset.img) return;
+    c.addEventListener("pointerenter", () => {
+      pi.onload = () => {
+        const r = c.getBoundingClientRect();
+        const w = box.offsetWidth, h = box.offsetHeight;
+        let x = r.right + 12;
+        if (x + w > innerWidth - 8) x = Math.max(8, r.left - w - 12);
+        const y = Math.min(Math.max(8, r.top + r.height / 2 - h / 2), innerHeight - h - 8);
+        box.style.left = x + "px"; box.style.top = y + "px";
+        box.classList.add("show");
+      };
+      pi.onerror = hide;
+      pi.src = c.dataset.img;
+    });
+    c.addEventListener("pointerleave", hide);
+    c.addEventListener("click", hide);
+  });
+})();
+
 /* ---------- Init ---------- */
 $("#year").textContent = new Date().getFullYear();
 go(location.hash.slice(1) || "home", false);
