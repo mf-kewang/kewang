@@ -282,8 +282,8 @@ body.on-home .stage { padding: 0; }
 .modal-close { position: absolute; top: 14px; right: 18px; font-size: 1.8rem; color: var(--muted); }
 @keyframes pop { from { transform: scale(.85); opacity: 0; } }
 
-/* ============ Family & Friends gallery ============ */
-.gallery { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 14px; }
+/* ============ Family & Friends gallery (4 photos) ============ */
+.gallery { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: minmax(0, 1fr); gap: 18px; }
 .shot {
   position: relative; display: grid; place-items: center; margin: 0; min-height: 0; overflow: hidden;
   border-radius: 18px; border: 1px solid var(--line); background: var(--accent-soft); box-shadow: var(--shadow);
@@ -299,6 +299,25 @@ body.on-home .stage { padding: 0; }
 }
 .shot figcaption b { font-family: var(--serif); font-size: 1.05rem; }
 .shot figcaption span { font-size: .78rem; opacity: .85; }
+
+/* ============ Per-tab transitions (subtle, each tab different) ============ */
+#home.active         { animation: tabFade .7s cubic-bezier(.2, .8, .2, 1); }
+#personal.active     { animation: tabSlideRight .6s cubic-bezier(.2, .8, .2, 1); }
+#achievements.active { animation: tabRise .6s cubic-bezier(.2, .8, .2, 1); }
+#family.active       { animation: tabZoom .7s cubic-bezier(.2, .8, .2, 1); }
+
+@keyframes tabFade       { from { opacity: 0; transform: scale(.985); } }
+@keyframes tabSlideRight { from { opacity: 0; transform: translateX(40px); } }
+@keyframes tabRise       { from { opacity: 0; transform: translateY(28px); } }
+@keyframes tabZoom       { from { opacity: 0; transform: scale(.96); filter: blur(4px); } }
+
+/* Family photos appear one after the other */
+#family.active .shot { animation: shotIn .6s cubic-bezier(.2, .8, .2, 1) backwards; }
+#family.active .shot:nth-child(1) { animation-delay: .10s; }
+#family.active .shot:nth-child(2) { animation-delay: .20s; }
+#family.active .shot:nth-child(3) { animation-delay: .30s; }
+#family.active .shot:nth-child(4) { animation-delay: .40s; }
+@keyframes shotIn { from { opacity: 0; transform: translateY(20px); } }
 
 /* ============ Footer ============ */
 .foot { position: fixed; bottom: 0; left: 0; right: 0; z-index: 15; display: flex; justify-content: space-between; align-items: center; padding: 14px clamp(18px, 4vw, 48px); font-size: .82rem; color: var(--muted); pointer-events: none; }
