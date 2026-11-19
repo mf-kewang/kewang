@@ -46,7 +46,7 @@ function movePill() {
   pill.style.transform = `translateX(${active.offsetLeft}px)`;
 }
 
-function go(id, push = true) {
+function show(id, push = true) {
   if (!order.includes(id)) id = "home";
   current = id;
   pages.forEach((p) => p.classList.toggle("active", p.id === id));
@@ -68,6 +68,83 @@ function go(id, push = true) {
   if (push) history.replaceState(null, "", "#" + id);
   scrollTo({ top: 0, behavior: "smooth" });
   if (id === "home") startTyping();
+}
+
+/* ---------- Tab transitions: a different effect for each step ---------- */
+const veil = $("#veil");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const FX_TIME = 380;
+let ready = false, anim = null, fxToken = 0;
+
+// Which effect plays for each step (going back plays the same effect in reverse)
+const fxByStep = {
+  "home>personal": "wipeUp",
+  "personal>achievements": "wipeSide",
+  "achievements>family": "fade",
+  "family>home": "circle",
+};
+const fxByTarget = { home: "circle", personal: "wipeUp", achievements: "wipeSide", family: "fade" };
+
+const fx = {
+  // Panel sweeps up (forward) or down (back)
+  wipeUp: {
+    cover:  (b) => [{ clipPath: b ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)" }, { clipPath: "inset(0)" }],
+    reveal: (b) => [{ clipPath: "inset(0)" }, { clipPath: b ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }],
+  },
+  // Panel sweeps from the left (forward) or from the right (back)
+  wipeSide: {
+    cover:  (b) => [{ clipPath: b ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)" }, { clipPath: "inset(0)" }],
+    reveal: (b) => [{ clipPath: "inset(0)" }, { clipPath: b ? "inset(0 100% 0 0)" : "inset(0 0 0 100%)" }],
+  },
+  // Simple cross-fade through the background
+  fade: {
+    cover:  () => [{ opacity: 0 }, { opacity: 1 }],
+    reveal: () => [{ opacity: 1 }, { opacity: 0 }],
+  },
+  // Circle opens from the center, then fades away
+  circle: {
+    cover:  () => [{ clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)" }],
+    reveal: () => [{ opacity: 1, clipPath: "circle(75% at 50% 50%)" }, { opacity: 0, clipPath: "circle(75% at 50% 50%)" }],
+  },
+};
+
+function pickFx(from, to) {
+  if (fxByStep[`${from}>${to}`]) return { name: fxByStep[`${from}>${to}`], back: false };
+  if (fxByStep[`${to}>${from}`]) return { name: fxByStep[`${to}>${from}`], back: true };
+  return { name: fxByTarget[to], back: order.indexOf(to) < order.indexOf(from) };
+}
+
+function cancelVeil() {
+  fxToken++;
+  if (anim) anim.cancel();
+  veil.style.visibility = "hidden";
+}
+
+function go(id, push = true) {
+  if (!order.includes(id)) id = "home";
+  if (!ready || reduceMotion || !veil.animate || id === current) { show(id, push); return; }
+  if (anim) { cancelVeil(); show(id, push); return; } // clicked again mid-transition: just switch
+
+  const { name, back } = pickFx(current, id);
+  const e = fx[name];
+  const token = ++fxToken;
+  const opts = { duration: FX_TIME, easing: "cubic-bezier(.6, .05, .2, 1)", fill: "both" };
+
+  veil.style.visibility = "visible";
+  anim = veil.animate(e.cover(back), opts);
+  anim.finished
+    .then(() => {
+      if (token !== fxToken) return;
+      show(id, push);
+      anim = veil.animate(e.reveal(back), { ...opts, delay: 60 });
+      return anim.finished;
+    })
+    .then(() => {
+      if (token !== fxToken) return;
+      anim.cancel(); anim = null;
+      veil.style.visibility = "hidden";
+    })
+    .catch(() => {});
 }
 
 links.concat($$(".logo")).forEach((a) =>
@@ -186,4 +263,5 @@ addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) cl
 /* ---------- Init ---------- */
 $("#year").textContent = new Date().getFullYear();
 go(location.hash.slice(1) || "home", false);
+ready = true;
 document.fonts && document.fonts.ready.then(movePill);
