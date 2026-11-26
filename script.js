@@ -68,6 +68,7 @@ function show(id, push = true) {
   if (push) history.replaceState(null, "", "#" + id);
   scrollTo({ top: 0, behavior: "smooth" });
   if (id === "home") startTyping();
+  if (id === "family") fitGallery();
 }
 
 /* ---------- Tab switching (instant, no transition effects) ---------- */
@@ -188,7 +189,44 @@ addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) cl
   });
 })();
 
+/* ---------- Family gallery: size the cards so every photo shows in full ---------- */
+function fitGallery() {
+  const gallery = $(".gallery");
+  const shots = $$(".shot", gallery);
+  gallery.style.gridTemplateColumns = "";
+  gallery.style.removeProperty("--photo-h");
+  // phones scroll normally; a hidden tab has no size to measure
+  if (innerWidth <= 960 || !gallery.clientWidth) return;
+
+  // width ÷ height of each photo (3:4 until it has loaded)
+  const ratios = shots.map((s) => {
+    const img = $("img", s);
+    return img && img.naturalWidth ? img.naturalWidth / img.naturalHeight : 0.75;
+  });
+  const total = ratios.reduce((a, b) => a + b, 0);
+  const gap = parseFloat(getComputedStyle(gallery).columnGap) || 0;
+  const freeW = gallery.clientWidth - gap * (shots.length - 1) - 2 * shots.length;
+  const maxH = freeW / total; // tallest the photos can be and still fit side by side
+
+  const apply = (h) => {
+    gallery.style.setProperty("--photo-h", h + "px");
+    gallery.style.gridTemplateColumns = ratios.map((r) => `${h * r + 2}px`).join(" ");
+  };
+
+  // shrink until the photos plus captions also fit the screen height
+  let h = Math.floor(maxH);
+  apply(h);
+  while (h > 120) {
+    const tallest = Math.max(...shots.map((s) => $("figcaption", s).offsetHeight));
+    if (h + tallest + 2 <= gallery.clientHeight) break;
+    h -= 4;
+    apply(h);
+  }
+}
+addEventListener("resize", fitGallery);
+$$(".shot img").forEach((img) => img.addEventListener("load", fitGallery));
+
 /* ---------- Init ---------- */
 $("#year").textContent = new Date().getFullYear();
 go(location.hash.slice(1) || "home", false);
-document.fonts && document.fonts.ready.then(movePill);
+document.fonts && document.fonts.ready.then(() => { movePill(); fitGallery(); });
