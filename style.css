@@ -285,28 +285,27 @@ body.on-home .stage { padding: 0; }
 @keyframes pop { from { transform: scale(.85); opacity: 0; } }
 
 /* ============ Family & Friends gallery (4 photos) ============ */
-/* Photos use a 3:4 frame (instead of a tall sliver) so faces aren't cropped,
-   and the caption sits below the photo so it never covers anyone. */
-#family { max-width: 1500px; }
+/* Every photo is shown in full (never cropped). script.js gives each card the same
+   shape as its photo, so all four have one height and fit on the screen. */
+.stage:has(#family.active) { padding-left: clamp(14px, 2.4vw, 40px); padding-right: clamp(14px, 2.4vw, 40px); }
+#family { max-width: 1750px; }
+#family .page-head { margin-bottom: clamp(8px, 1.8vh, 18px); }
+#family .page-head h2 { font-size: clamp(1.5rem, 3.8vh, 2.4rem); }
 .gallery {
   flex: 1; min-height: 0;
   display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-content: center; gap: clamp(12px, 1.6vw, 24px);
+  justify-content: center; align-content: center; gap: clamp(10px, 1.2vw, 20px);
 }
 .shot {
-  display: flex; flex-direction: column; margin: 0; overflow: hidden;
+  display: flex; flex-direction: column; min-width: 0; margin: 0; overflow: hidden;
   border-radius: 18px; border: 1px solid var(--line); background: var(--card); box-shadow: var(--shadow);
   transition: transform .4s cubic-bezier(.2, .8, .2, 1);
 }
 .shot:hover { transform: translateY(-6px); }
-.shot img {
-  display: block; width: 100%; aspect-ratio: 3 / 4; max-height: 62vh;
-  object-fit: cover; object-position: center 30%; transition: transform .6s;
-}
-.shot:hover img { transform: scale(1.03); }
-.shot figcaption { display: grid; gap: 4px; padding: 14px 16px 16px; color: var(--ink); }
-.shot figcaption b { font-family: var(--serif); font-size: 1.1rem; }
-.shot figcaption span { font-size: .85rem; line-height: 1.4; color: var(--muted); }
+.shot img { display: block; width: 100%; height: var(--photo-h, 50vh); object-fit: contain; }
+.shot figcaption { display: grid; gap: 3px; padding: clamp(8px, 1.4vh, 14px) clamp(10px, 1vw, 16px); color: var(--ink); }
+.shot figcaption b { font-family: var(--serif); font-size: clamp(.95rem, 2.2vh, 1.1rem); }
+.shot figcaption span { font-size: clamp(.72rem, 1.7vh, .85rem); line-height: 1.35; color: var(--muted); }
 
 /* ============ Tab switching: instant (no wipe / fade effects) ============ */
 .page.active { animation: none; }
@@ -352,7 +351,7 @@ body.on-home .stage { padding: 0; }
   .ach { grid-template-rows: none; }
   #achievements { max-width: none; }
   .gallery { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; grid-auto-rows: auto; }
-  .shot img { max-height: none; }
+  .shot img { height: auto; }
 
   .menu-btn { display: flex; }
   .nav {
@@ -362,6 +361,7 @@ body.on-home .stage { padding: 0; }
   }
   .nav.open { opacity: 1; pointer-events: auto; transform: none; }
   .nav-pill { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
